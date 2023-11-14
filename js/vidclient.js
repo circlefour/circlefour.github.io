@@ -7,14 +7,12 @@
  let participants = [];
  let meeting = null;
  let localParticipant;
- let localParticipantAudio;
- let remoteParticipantId = "";
  
  joinButton.addEventListener("click", () => {
    joinButton.style.display = "none";
-   textDiv.textContent = "Please wait, we are joining the meeting";
+   textDiv.textContent = "joining the feed";
  
-  // generated dev token for a year : if using lan, removes necessity of auth server 
+  // generated dev token for a year 
   // ye it's terrible practice.... 4 now
    window.VideoSDK.config("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJiNDlkYjU3NS01NzEwLTQyZmMtODUwOS1mZjg3ZGYyZTc3YjEiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY5OTY3ODIwNywiZXhwIjoxNzMxMjE0MjA3fQ.CfEsNocGrn-YKXsJv7maKmhKEgvLsCqlSgxqgcqlnTY");
    meeting = window.VideoSDK.initMeeting({
@@ -33,8 +31,8 @@
     videoElement.classList.add("video-frame");
     videoElement.setAttribute("id", `v-${pId}`);
     videoElement.setAttribute("playsinline", true);
-    videoElement.setAttribute("width", "320");
-    videoElement.setAttribute("height", "180");
+//    videoElement.setAttribute("width", "320");
+//    videoElement.setAttribute("height", "180");
     return videoElement;
   }
   
@@ -60,9 +58,6 @@
   }
 
   joinButton.addEventListener("click", () => {
-    // ...
-    // ...
-    // ...
     
     // creating local participant
       createLocalParticipant();
@@ -78,27 +73,5 @@
     
       meeting.on("meeting-joined", () => {
         textDiv.style.display = "none";
-      });
-    
-      // other participants
-      meeting.on("participant-joined", (participant) => {
-        let videoElement = createVideoElement(participant.id);
-        remoteParticipantId = participant.id;
-    
-        participant.on("stream-enabled", (stream) => {
-          setTrack(stream, participant, (isLocal = false));
-        });
-        videoContainer.appendChild(videoElement);
-      });
-    
-      // participants left
-      meeting.on("participant-left", (participant) => {
-        let vElement = document.getElementById(`v-${participant.id}`);
-        vElement.parentNode.removeChild(vElement);
-    
-        let aElement = document.getElementById(`a-${participant.id}`);
-        aElement.parentNode.removeChild(aElement);
-        //remove it from participant list participantId;
-        document.getElementById(`p-${participant.id}`).remove();
       });
     });
