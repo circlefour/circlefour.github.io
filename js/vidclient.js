@@ -77,10 +77,12 @@
   }
 
   function toggleCam() {
+    let cam = 0;
+    if (!frontCam) cam = 1;
     //frontCam = !frontCam;
     console.log('test switch');
     //const { deviceId, label } = webcams[frontCam];
-    const { deviceId, label } = webcams[0];
+    const { deviceId, label } = webcams[cam];
     console.log(deviceId);
     meeting.changeWebcam(deviceId);
     
@@ -91,6 +93,8 @@
     } else {
       videoElm.style.transform = 'none';
     }
+    
+    frontCam = !frontCam;
   }
 
   joinButton.addEventListener("click", () => {
