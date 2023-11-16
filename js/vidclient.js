@@ -89,11 +89,13 @@
     if (frontCam) {
       const participant = meeting.localParticipant;
       const videoElm = document.getElementById(`v-${participant.id}`);
-      videoElm.style.transform = 'scaleX(-1)';
+      //videoElm.style.transform = 'scaleX(-1)';
     } else {
       videoElm.style.transform = 'none';
+      //videoElm.style.transform = 'scaleX(-1)';
     }
     
+    videoElm.style.transform = 'scaleX(-1)';
     frontCam = !frontCam;
   }
 

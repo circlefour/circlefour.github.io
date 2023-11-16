@@ -6,6 +6,7 @@ body {
 
 video {
     z-index: 1;
+    transform: scaleX(-1);
 }
 
 #toggleCam,
