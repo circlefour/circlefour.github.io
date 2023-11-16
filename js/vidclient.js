@@ -9,8 +9,10 @@
  let participants = [];
  let meeting = null;
  let localParticipant;
+
+ let webcams = null;
  
- joinButton.addEventListener("click", () => {
+ joinButton.addEventListener("click", async () => {
    joinButton.style.display = "none";
    textDiv.textContent = "joining the feed";
  
@@ -25,7 +27,15 @@
    });
  
    meeting.join();
+
+   webcams = await meeting.getWebcams();
+   console.log(webcams);
  });
+ 
+ //(async () => {
+ //   const ok = await meeting.getWebcams();
+ //   console.log(ok);
+ //})(); 
 
   // creating video element
   function createVideoElement(pId) {
@@ -56,21 +66,28 @@
         .catch((error) =>
           console.error("videoElem.current.play() failed", error)
         );
-      const cams = meeting.getWebcams();
-      if (cams.length > 0) {
+      if (webcams.length > 1) {
+        console.log('hiiiiii');
         toggleCameraButton.style.display = 'block';
         toggleCameraButton.addEventListener('click', toggleCam);
       } else {
-        console.error('no webcams found');
+        console.log('no cameras found');
       }
     }
   }
 
   function toggleCam() {
-    const webcams = meeting.getWebcams();
     frontCam = !frontCam;
     const { deviceId, label } = webcams[frontCam];
     meeting.changeWebcam(deviceId);
+    
+    if (frontCam) {
+      const participant = meeting.localParticipant;
+      const videoElm = document.getElementById(`v-${participant.id}`);
+      videoElm.style.transform = 'scaleX(-1)';
+    } else {
+      videoElm.style.transform = 'none';
+    }
   }
 
   joinButton.addEventListener("click", () => {
@@ -89,5 +106,13 @@
     
       meeting.on("meeting-joined", () => {
         textDiv.style.display = "none";
-      });
-    });
+      });   
+  });
+  
+ //const cams = await meeting.getWebcams();
+ // if (cams.length > 0) {
+ //    toggleCameraButton.style.display = 'block';
+ //    toggleCameraButton.addEventListener('click', toggleCam(cams));
+ // } else {
+ //    console.error('no webcams found');
+ // }
