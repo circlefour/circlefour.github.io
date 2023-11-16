@@ -31,8 +31,8 @@
     videoElement.classList.add("video-frame");
     videoElement.setAttribute("id", `v-${pId}`);
     videoElement.setAttribute("playsinline", true);
-//    videoElement.setAttribute("width", "320");
-//    videoElement.setAttribute("height", "180");
+    videoElement.setAttribute("width", "100%");
+    videoElement.setAttribute("height", "100%");
     return videoElement;
   }
   
