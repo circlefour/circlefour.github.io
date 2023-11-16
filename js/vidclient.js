@@ -66,7 +66,7 @@
         .catch((error) =>
           console.error("videoElem.current.play() failed", error)
         );
-      if (webcams.length > 0) {
+      if (webcams.length > 1) {
         console.log('hiiiiii');
         toggleCameraButton.style.display = 'block';
         toggleCameraButton.addEventListener('click', toggleCam);
