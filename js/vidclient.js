@@ -79,7 +79,8 @@
   function toggleCam() {
     //frontCam = !frontCam;
     console.log('test switch');
-    const { deviceId, label } = webcams[frontCam];
+    //const { deviceId, label } = webcams[frontCam];
+    const { deviceId, label } = webcams[0];
     console.log(deviceId);
     meeting.changeWebcam(deviceId);
     
