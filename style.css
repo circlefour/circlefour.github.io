@@ -4,7 +4,7 @@ body {
     overflow: hidden;
 }
 
-button,
+#joinButton,
 #textDiv {
     position: absolute;
     top: 40%;

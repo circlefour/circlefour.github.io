@@ -2,6 +2,8 @@
  const joinButton = document.querySelector("button");
  const videoContainer = document.getElementById("videoContainer");
  const textDiv = document.getElementById("textDiv");
+ const toggleCameraButton = document.getElementById('toggleCam');
+ let frontCam = true;
  
  // decalare Variables
  let participants = [];
@@ -54,7 +56,21 @@
         .catch((error) =>
           console.error("videoElem.current.play() failed", error)
         );
+      const cams = meeting.getWebcams();
+      if (cams.length > 0) {
+        toggleCameraButton.style.display = 'block';
+        toggleCameraButton.addEventListener('click', toggleCam);
+      } else {
+        console.error('no webcams found');
+      }
     }
+  }
+
+  function toggleCam() {
+    const webcams = meeting.getWebcams();
+    frontCam = !frontCam;
+    const { deviceId, label } = webcams[frontCam];
+    meeting.changeWebcam(deviceId);
   }
 
   joinButton.addEventListener("click", () => {

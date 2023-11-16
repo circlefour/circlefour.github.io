@@ -3,17 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>surveille yourself!</title>
+    <title>surveil yourself!</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
   </head>
   <body>
-    <button>join feed</button>
+    <button id="joinButton">join feed</button>
     
     <!-- join status -->
     <div id="textDiv"></div>
 
     <div class="row" id="videoContainer"></div>
+
+    <button id="toggleCam" style="display: none;">switch camera</button>
 
     <script src="js/vidclient.js"></script>
     <script src="https://sdk.videosdk.live/js-sdk/0.0.63/videosdk.js"></script>
