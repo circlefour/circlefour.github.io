@@ -79,7 +79,7 @@
 
   function toggleCam() {
     let cam = 0;
-    if (!frontCam) cam = 1;
+    if (frontCam) cam = 1;
     //frontCam = !frontCam;
     console.log('test switch');
     //const { deviceId, label } = webcams[frontCam];
@@ -87,14 +87,17 @@
     console.log(deviceId);
     meeting.changeWebcam(deviceId);
     
-    if (frontCam) {
-      const participant = meeting.localParticipant;
-      const videoElm = document.getElementById(`v-${participant.id}`);
-      //videoElm.style.transform = 'scaleX(-1)';
-    } else {
-      videoElm.style.transform = 'none';
-      //videoElm.style.transform = 'scaleX(-1)';
-    }
+    const participant = meeting.localParticipant;
+    const videoElm = document.getElementById(`v-${participant.id}`);
+    
+   // if (frontCam) {
+   //   const participant = meeting.localParticipant;
+   //  // const videoElm = document.getElementById(`v-${participant.id}`);
+   //   //videoElm.style.transform = 'scaleX(-1)';
+   // } else {
+   //   videoElm.style.transform = 'none';
+   //   //videoElm.style.transform = 'scaleX(-1)';
+   // }
     
     videoElm.style.transform = 'scaleX(-1)';
     frontCam = !frontCam;
