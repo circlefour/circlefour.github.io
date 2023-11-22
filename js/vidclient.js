@@ -66,7 +66,7 @@
         .catch((error) =>
           console.error("videoElem.current.play() failed", error)
         );
-      if (webcams.length > 0) {
+      if (webcams.length > 1) {
         console.log(webcams);
         console.log('hiiiiii');
         toggleCameraButton.style.display = 'block';
@@ -90,15 +90,6 @@
     const participant = meeting.localParticipant;
     const videoElm = document.getElementById(`v-${participant.id}`);
     
-   // if (frontCam) {
-   //   const participant = meeting.localParticipant;
-   //  // const videoElm = document.getElementById(`v-${participant.id}`);
-   //   //videoElm.style.transform = 'scaleX(-1)';
-   // } else {
-   //   videoElm.style.transform = 'none';
-   //   //videoElm.style.transform = 'scaleX(-1)';
-   // }
-    
     videoElm.style.transform = 'scaleX(-1)';
     frontCam = !frontCam;
   }
@@ -121,11 +112,3 @@
         textDiv.style.display = "none";
       });   
   });
-  
- //const cams = await meeting.getWebcams();
- // if (cams.length > 0) {
- //    toggleCameraButton.style.display = 'block';
- //    toggleCameraButton.addEventListener('click', toggleCam(cams));
- // } else {
- //    console.error('no webcams found');
- // }

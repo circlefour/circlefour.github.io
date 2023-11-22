@@ -9,7 +9,6 @@ video {
     transform: scaleX(-1);
 }
 
-#toggleCam,
 #joinButton,
 #textDiv {
     position: absolute;
@@ -20,6 +19,10 @@ video {
 }
 
 #toggleCam {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: 20px;
     display: none;
     z-index: 2;
 }
