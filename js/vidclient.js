@@ -26,9 +26,6 @@ let camIndex = 0;
    });
  
    meeting.join();
-
-   webcams = await meeting.getWebcams();
-   console.log(webcams);
  });
  
   // creating video element
