@@ -18,13 +18,8 @@ video {
     font-size: 50px;
 }
 
-#toggleCam {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    font-size: 20px;
+#flip {
     display: none;
-    z-index: 2;
 }
 
 #videoContainer {

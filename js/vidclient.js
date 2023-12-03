@@ -57,32 +57,7 @@ let camIndex = 0;
         .catch((error) =>
           console.error("videoElem.current.play() failed", error)
         );
-      if (webcams.length > 1) {
-        console.log(webcams);
-        console.log('hiiiiii');
-        toggleCameraButton.style.display = 'block';
-        toggleCameraButton.addEventListener('click', toggleCam);
-      } else {
-        console.log('no cameras found');
-      }
     }
-  }
-
-  function toggleCam() {
-    let cam = 0;
-    if (frontCam) cam = 1;
-    //frontCam = !frontCam;
-    console.log('test switch');
-    //const { deviceId, label } = webcams[frontCam];
-    const { deviceId, label } = webcams[cam];
-    console.log(deviceId);
-    meeting.changeWebcam(deviceId);
-    
-    const participant = meeting.localParticipant;
-    const videoElm = document.getElementById(`v-${participant.id}`);
-    
-    videoElm.style.transform = 'scaleX(-1)';
-    frontCam = !frontCam;
   }
 
   joinButton.addEventListener("click", () => {
@@ -101,12 +76,14 @@ let camIndex = 0;
     
       meeting.on("meeting-joined", () => {
         textDiv.style.display = "none";
+        
+        // displaying flip cam button
+        flipBtn.style.display = 'block';
       });   
   });
 
 flipBtn.addEventListener('click', async () => {
     const devices = await meeting?.getWebcams();
-    //console.log(devices);
     
     camIndex = (camIndex + 1) % devices.length;
     meeting?.changeWebcam(devices[camIndex].deviceId);
