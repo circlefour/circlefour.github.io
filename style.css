@@ -22,6 +22,7 @@ video {
 #flip {
     display: none;
     position: absolute;
+    font-size: 20px;
     top: 10px;
     left: 10px;
     z-index: 1;
