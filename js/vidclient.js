@@ -2,15 +2,14 @@
  const joinButton = document.querySelector("button");
  const videoContainer = document.getElementById("videoContainer");
  const textDiv = document.getElementById("textDiv");
- const toggleCameraButton = document.getElementById('toggleCam');
- let frontCam = true;
+ const flipBtn = document.getElementById('flip');
  
  // decalare Variables
  let participants = [];
  let meeting = null;
  let localParticipant;
 
- let webcams = null;
+let camIndex = 0; 
  
  joinButton.addEventListener("click", async () => {
    joinButton.style.display = "none";
@@ -32,11 +31,6 @@
    console.log(webcams);
  });
  
- //(async () => {
- //   const ok = await meeting.getWebcams();
- //   console.log(ok);
- //})(); 
-
   // creating video element
   function createVideoElement(pId) {
     let videoElement = document.createElement("video");
@@ -112,3 +106,12 @@
         textDiv.style.display = "none";
       });   
   });
+
+flipBtn.addEventListener('click', async () => {
+    const devices = await meeting?.getWebcams();
+    //console.log(devices);
+    
+    camIndex = (camIndex + 1) % devices.length;
+    meeting?.changeWebcam(devices[camIndex].deviceId);
+});
+
