@@ -8,6 +8,8 @@ const flipBtn = document.getElementById('flip');
  let participants = [];
  let meeting = null;
  let localParticipant;
+
+let camIndex = 0;
  
  joinButton.addEventListener("click", () => {
    joinButton.style.display = "none";
@@ -80,4 +82,7 @@ const flipBtn = document.getElementById('flip');
 flipBtn.addEventListener('click', async () => {
     const devices = await meeting?.getWebcams();
     console.log(devices);
+    
+    camIndex = (camIndex + 1) % devices.length;
+    meeting?.changeWebcam(devices[camIndex].deviceId);
 });
