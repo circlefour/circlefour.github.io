@@ -2,6 +2,7 @@
  const joinButton = document.querySelector("button");
  const videoContainer = document.getElementById("videoContainer");
  const textDiv = document.getElementById("textDiv");
+const flipBtn = document.getElementById('flip');
  
  // decalare Variables
  let participants = [];
@@ -75,3 +76,8 @@
         textDiv.style.display = "none";
       });
     });
+
+flipBtn.addEventListener('click', async () => {
+    const devices = await meeting?.getWebcams();
+    console.log(devices);
+});
