@@ -84,6 +84,8 @@ let camIndex = 0;
 
 flipBtn.addEventListener('click', async () => {
     const devices = await meeting?.getWebcams();
+
+    console.log(devices);
     
     camIndex = (camIndex + 1) % devices.length;
     meeting?.changeWebcam(devices[camIndex].deviceId);
