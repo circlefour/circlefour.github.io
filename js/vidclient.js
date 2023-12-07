@@ -3,6 +3,8 @@
  const videoContainer = document.getElementById("videoContainer");
  const textDiv = document.getElementById("textDiv");
  const flipBtn = document.getElementById('flip');
+
+const camSelect = document.getElementById('camSelect');
  
  // decalare Variables
  let participants = [];
@@ -81,6 +83,25 @@ let camIndex = 0;
         flipBtn.style.display = 'block';
       });   
   });
+
+async function listCams() {
+    try {
+        const devices = await meeting?.getWebcams();
+        camSelect.innerHTML = '';
+        
+        devices.forEach((device) => {
+            const option = document.createElement('option');
+            option.value = device.deviceId;
+            option.text = device.label || `camera ${cameraDropdown.options.length + 1}`;
+            camSelect.appendChild(option);
+        });
+    } catch(error) {console.log(error);}
+}
+
+camSelect.addEventListener('change', async () => {
+    const selectedCam = camSelect.value;
+    meeting?.changeWebcam(selectedCam);
+});
 
 flipBtn.addEventListener('click', async () => {
     const devices = await meeting?.getWebcams();
