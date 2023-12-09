@@ -92,7 +92,7 @@ async function listCams() {
         camSelect.innerHTML = '';
         
         devices.forEach((device) => {
-            alert('here');
+            //alert('here');
             const option = document.createElement('option');
             option.value = device.deviceId;
             option.text = device.label || `camera ${cameraDropdown.options.length + 1}`;
