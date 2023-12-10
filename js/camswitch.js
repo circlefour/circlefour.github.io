@@ -10,6 +10,7 @@ joinButton.addEventListener('click', () => {
 async function listCams() {
     try {
         const devices = await meeting?.getWebcams();
+        console.log(devices);
         camSelect.innerHTML = '';
         
         devices.forEach((device) => {
