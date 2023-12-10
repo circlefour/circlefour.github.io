@@ -3,12 +3,6 @@ body {
     padding: 0;
     overflow: hidden;
 }
-/*
-video {
-    z-index: 1;
-    transform: scaleX(-1);
-}
-*/
 
 #joinButton,
 #textDiv {
@@ -19,20 +13,13 @@ video {
     font-size: 50px;
 }
 
-#flip {
+#camSelect {
     display: none;
     position: absolute;
     font-size: 20px;
     top: 40px;
     left: 10px;
     z-index: 1;
-}
-
-#camSelect {
-    position: absolute;
-    top: 10%;
-    left: 70%;
-    font-size: 20px;
 }
 
 #videoContainer {

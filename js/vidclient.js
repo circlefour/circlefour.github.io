@@ -2,17 +2,12 @@
  const joinButton = document.querySelector("button");
  const videoContainer = document.getElementById("videoContainer");
  const textDiv = document.getElementById("textDiv");
- const flipBtn = document.getElementById('flip');
 
-const camSelect = document.getElementById('camSelect');
- 
  // decalare Variables
  let participants = [];
  let meeting = null;
  let localParticipant;
 
-let camIndex = 0; 
- 
  joinButton.addEventListener("click", async () => {
    joinButton.style.display = "none";
    textDiv.textContent = "joining the feed";
@@ -78,46 +73,5 @@ let camIndex = 0;
     
       meeting.on("meeting-joined", () => {
         textDiv.style.display = "none";
-        
-        // displaying flip cam button
-        flipBtn.style.display = 'block';
       });   
   });
-
-async function listCams() {
-    try {
-        const devices = await meeting?.getWebcams();
-        //alert(devices);
-        console.log(devices);
-        camSelect.innerHTML = '';
-        
-        devices.forEach((device) => {
-            const option = document.createElement('option');
-            option.value = device.deviceId;
-            option.text = device.label || `camera ${cameraDropdown.options.length + 1}`;
-            camSelect.appendChild(option);
-        });
-    } catch(error) {
-        alert(error);
-        //console.log(error);
-    }
-}
-
-camSelect.addEventListener('click', async () => {
-    listCams();
-});
-
-camSelect.addEventListener('change', async () => {
-    const selectedCam = camSelect.value;
-    meeting?.changeWebcam(selectedCam);
-});
-
-flipBtn.addEventListener('click', async () => {
-    const devices = await meeting?.getWebcams();
-
-    console.log(devices);
-    
-    camIndex = (camIndex + 1) % devices.length;
-    meeting?.changeWebcam(devices[camIndex].deviceId);
-});
-
