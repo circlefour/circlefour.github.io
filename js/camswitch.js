@@ -1,7 +1,7 @@
 const camSelect = document.getElementById('camSelect');
 
 joinButton.addEventListener('click', () => {
-    meeting.on("meeting-joined", () => {
+    meeting.localParticipant.on("stream-enabled", (stream) => {
         camSelect.style.display = 'block';
         listCams();
     });  
