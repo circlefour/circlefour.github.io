@@ -25,7 +25,6 @@ async function listCams() {
 }
 
 camSelect.addEventListener('change', async () => {
-    camSelect.selected = true;
     const selectedCam = camSelect.value;
     meeting?.changeWebcam(selectedCam);
 });
