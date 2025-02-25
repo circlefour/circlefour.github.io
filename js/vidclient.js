@@ -14,7 +14,7 @@
  
   // generated dev token for a year 
   // ye it's terrible practice.... 4 now
-   window.VideoSDK.config("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJiNDlkYjU3NS01NzEwLTQyZmMtODUwOS1mZjg3ZGYyZTc3YjEiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY5OTY3ODIwNywiZXhwIjoxNzMxMjE0MjA3fQ.CfEsNocGrn-YKXsJv7maKmhKEgvLsCqlSgxqgcqlnTY");
+   window.VideoSDK.config("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJiNDlkYjU3NS01NzEwLTQyZmMtODUwOS1mZjg3ZGYyZTc3YjEiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTc0MDIxMjY3MiwiZXhwIjoxNzQwMjk5MDcyfQ.jdppUY5ndg2FSCNV8bggd2BeUpzS2oxlvlPg6WmVSO4");
    meeting = window.VideoSDK.initMeeting({
      meetingId: "zw7a-clv1-5tdq", // required
      name: "Circle's Org", // required
